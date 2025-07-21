@@ -4,3 +4,10 @@ services:
     command: bash start.sh
     restart: on-failure
     network_mode: "host"
+    volumes:
+      # Make the container match the host’s timezone data
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro  # Debian/Ubuntu hosts; on RHEL you can omit this
+    environment:
+      # Fallback: explicitly set TZ if you need it inside apps
+      TZ: Asia/Colombo
