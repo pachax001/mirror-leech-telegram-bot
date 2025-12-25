@@ -71,7 +71,7 @@ programming in Python.
   on [Sreeraj](https://github.com/SVR666) searchX-bot. (task option)
 - Stop Duplicates (global and user option)
 - Custom upload destination (global, user, and task option)
-- Ability to choose token.pickle or service acccount and upload destinations from list with or without buttons (global, user and task option)
+- Ability to choose token.pickle or service account and upload destinations from list with or without buttons (global, user and task option)
 - Index link support only
   for [Bhadoo](https://gitlab.com/GoogleDriveIndex/Google-Drive-Index/-/blob/master/src/worker.js)
 
@@ -135,7 +135,7 @@ programming in Python.
 - Store RSS data
 - Store incompleted task messages
 - Store JDownloader settings
-- Store config.py file on first build and incase any change occured to it, then next build it will define variables
+- Store config.py file on first build and incase any change occurred to it, then next build it will define variables
   from config.py instead of database
 
 </details>
@@ -295,6 +295,8 @@ Fill up rest of the fields. Meaning of each field is discussed below.
 
 - `EXCLUDED_EXTENSIONS` (`Str`): File extensions that won't upload/clone. Separate them by spaces.
 
+- `INCLUDED_EXTENSIONS` (`Str`): File extensions to be uploaded/cloned. `EXCLUDED_EXTENSIONS` will be ignore if you filled this ! Separate them by spaces.
+
 - `INCOMPLETE_TASK_NOTIFIER` (`Bool`): Get incomplete task messages after restart. Require database and superGroup. Default
 is `False`.
 
@@ -320,13 +322,13 @@ see [Using Service Accounts](https://github.com/anasty17/mirror-leech-telegram-b
   **Example**:
   - Here I will explain how to use mltb.* which is reference to files you want to work on.
   1. First cmd: the input is mltb.mkv so this cmd will work only on mkv videos and the output is mltb.mkv also so all outputs is mkv. `-del` will delete the original media after complete run of the cmd.
-  2. Second cmd: the input is mltb.video so this cmd will work on all videos and the output is only mltb so the extenstion is same as input files.
+  2. Second cmd: the input is mltb.video so this cmd will work on all videos and the output is only mltb so the extension is same as input files.
   3. Third cmd: the input in mltb.m4a so this cmd will work only on m4a audios and the output is mltb.mp3 so the output extension is mp3.
   4. Fourth cmd: the input is mltb.audio so this cmd will work on all audios and the output is mltb.mp3 so the output extension is mp3.
   5. FFmpeg Variables in last cmd which is metadata ({title}, {title2}, etc...), you can edit them in usetting
   6. Telegram link for small size inputs like photo to set watermark.
 
-- `NAME_SUBSTITUTE` (`Str`): Add word/letter/character/sentense/pattern to remove or replace with other words with sensitive case or without. 
+- `NAME_SUBSTITUTE` (`Str`): Add word/letter/character/sentence/pattern to remove or replace with other words with sensitive case or without. 
   **Notes**:
     - Before any character you must add `\BACKSLASH`, those are the characters: `\^$.|?*+()[]{}-`
     * Example: script/code/s | mirror/leech | tea/ /s | clone | cpu/ | \[mltb\]/mltb | \\text\\/text/s
@@ -344,7 +346,7 @@ see [Using Service Accounts](https://github.com/anasty17/mirror-leech-telegram-b
 
 - `IS_TEAM_DRIVE` (`Bool`): Set `True` if uploading to TeamDrive using google-api-python-client. Default is `False`.
 
-- `INDEX_URL` (`Str`): Refer to <https://gitlab.com/ParveenBhadooOfficial/Google-Drive-Index>.
+- `INDEX_URL` (`Str`): Refer to <https://gitlab.com/ParveenBhadooOfficial/Google-Drive-Index>. Example: https://xxx.xx.workers.dev/0: (If you have multiple ID config -- replace 0: with the desired id index) or https://xxx.xx.workers.dev without index if you only have one ID in config which is the basic config.
 
 - `STOP_DUPLICATE` (`Bool`): Bot will check file/folder name in Drive incase uploading to `GDRIVE_ID`. If it's present in Drive then downloading or cloning will be stopped. (**NOTE**: Item will be checked using name and not hash, so this feature is not perfect). Default is `False`.
 
@@ -784,13 +786,13 @@ python3 gen_sa_accounts.py --list-projects
 python3 gen_sa_accounts.py --enable-services $PROJECTID
 ```
 
-- Create Sevice Accounts to current project
+- Create Service Accounts to current project
 
 ```
 python3 gen_sa_accounts.py --create-sas $PROJECTID
 ```
 
-- Download Sevice Accounts as accounts folder
+- Download Service Accounts as accounts folder
 
 ```
 python3 gen_sa_accounts.py --download-keys $PROJECTID

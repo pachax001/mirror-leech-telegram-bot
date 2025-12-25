@@ -16,6 +16,7 @@ class Config:
     DEFAULT_UPLOAD = "rc"
     EQUAL_SPLITS = False
     EXCLUDED_EXTENSIONS = ""
+    INCLUDED_EXTENSIONS = ""
     FFMPEG_CMDS = {}
     FILELION_API = ""
     GDRIVE_ID = ""
@@ -31,7 +32,7 @@ class Config:
     HYBRID_LEECH = False
     HYDRA_IP = ""
     HYDRA_API_KEY = ""
-    NAME_SUBSTITUTE = ""
+    NAME_SUBSTITUTE = r""
     OWNER_ID = 0
     QUEUE_ALL = 0
     QUEUE_DOWNLOAD = 0
@@ -154,7 +155,6 @@ class Config:
         if attr in {
             "BASE_URL",
             "RCLONE_SERVE_URL",
-            "INDEX_URL",
             "SEARCH_API_LINK",
         }:
             return converted_value.strip("/") if converted_value else ""

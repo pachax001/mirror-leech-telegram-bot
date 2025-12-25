@@ -6,7 +6,7 @@ from pymongo.server_api import ServerApi
 from pymongo.errors import PyMongoError
 
 from ... import LOGGER, user_data, rss_dict, qbit_options
-from ...core.mltb_client import TgClient
+from ...core.telegram_manager import TgClient
 from ...core.config_manager import Config
 
 
@@ -21,7 +21,10 @@ class DbManager:
             if self._conn is not None:
                 await self._conn.close()
             self._conn = AsyncMongoClient(
-                Config.DATABASE_URL, server_api=ServerApi("1")
+                Config.DATABASE_URL,
+                server_api=ServerApi("1"),
+                connectTimeoutMS=60000,
+                serverSelectionTimeoutMS=60000,
             )
             self.db = self._conn.mltb
             self._return = False
